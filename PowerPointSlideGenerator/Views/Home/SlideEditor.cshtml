@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "SlideEditor";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">Powerpoint Generator</h1>
+    </div>
+    <div class="panel-body editor">
+        @using (Html.BeginForm("SlideContent", "Home", FormMethod.Post))
+        {
+            <div class="editor__input">
+                <label>Title:</label>
+                <input type="text" name="title" id="slideTitle"/>
+            </div>
+            <div class="editor__input">
+                <label>Body:</label>
+                <div class="rich-textarea" id="slideBody"></div>
+                <!--<textarea name="body" id="slideBody"></textarea>-->
+            </div>
+            <div id="imgContainer">
+            </div>
+            <input type="submit" />
+        }
+
+    </div>
+</div>

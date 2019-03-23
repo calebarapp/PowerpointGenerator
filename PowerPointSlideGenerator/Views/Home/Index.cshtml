@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    ViewData["Title"] = "SlideEditor";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">Powerpoint Generator</h1>
+    </div>
+    <div class="panel-body editor">
+        @using (Html.BeginForm("SlideContent", "Home", FormMethod.Post))
+        {
+            <div class="editor__input">
+                <label>Name:</label>
+                @Html.TextBox("SlideNme")
+            </div>
+                <div class="editor__input">
+                    <label>Title:</label>
+                    <input type="text" name="title" id="slideTitle" />
+                </div>
+                <div class="editor__input">
+                    <label>Body:</label>
+                    <div class="rich-textarea" id="slideBody"></div>
+                </div>
+                <div id="loadingIndicator" class="loading-indicator">Searching...</div>
+                <!--Renders search results with knockout observable. Checkbox is hidden via CSS and activated via JS on click. 
+                Url of image is value of checkbox input.    
+                -->
+                <ul data-bind="foreach: imageSearchResults" class="search-results">
+                    <li data-bind="click: function(data, event){ imageSelect(event)}" class="search-results__img-container">
+                        <div class="search-results__img-shader"></div>
+                        <img data-bind="attr:{src: $data.url}" />
+                        <input data-bind="value: $data.url" class="search-results__checkbox" type="checkbox" name="images" />
+                    </li>
+                </ul>
+                <input type="submit" />
+                }
+            </div>
+        </div>
